@@ -1,0 +1,31 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+tab_width = 8
+trim_trailing_whitespace = true
+
+[*.{c,cpp,c++,cc}]
+curly_bracket_next_line = false
+indent_brace_style = K&R
+indent_size = 4
+indent_style = space
+spaces_around_brackets = outside
+spaces_around_operators = true
+
+[*.{js,json,ts,py,css,htm,html}]
+indent_size = 4
+indent_style = space
+
+[*.{md,yml}]
+trim_trailing_whitespace = false  # 2 spaces means new-line
+
+[Makefile]
+indent_style = tab
+
+[{package.json,.travis.yml}]
+indent_size = 2
+indent_style = space

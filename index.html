@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'"> -->
+    <!-- <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'"> -->
+    <title>LRA1 tool</title>
+</head>
+
+<body>
+    <nav class="navbar is-link is-fixed-top" role="navigation">
+        <div class="navbar-brand">
+            <h1 class="navbar-item">LoRa 通信距離計測ツール</h1>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+            </div>
+            <div class="navbar-end">
+            </div>
+        </div>
+    </nav>
+
+    <div class="columns is-vcentered has-text-right">
+        <div class="column">
+            <a class="button" title="設定" id="buttonSettings"><i class="fas fa-cog"></i> 設定</a>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <div class="content is-small">
+                <h1><i class="fas fa-satellite"></i> GPS</h1>
+                <h2>Location</h2>
+                <input class="input is-small" id="latlng" value="lat: ---.-------, lng: ---.-------" readonly>
+                <h2>Datetime</h2>
+                <input class="input is-small" id="datetime" value="----/--/-- --:--:--" readonly>
+                <h2>Preview</h2>
+                <textarea class="textarea is-small" placeholder="GPS output" id="gps_out" rows="3" readonly></textarea>
+            </div>
+        </div>
+        <div class="column">
+            <div class="content is-small">
+                <h1><i class="fas fa-broadcast-tower"></i> LoRa</h1>
+                <h2>RSSI</h2>
+                <input class="input is-small" type="text" id="rssi" readonly>
+                <h2>Data</h2>
+                <input class="input is-small" id="received_data" readonly>
+                <h2>Preview</h2>
+                <textarea class="textarea is-small" placeholder="LoRa output" id="lora_out" rows="3"
+                    readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <button class="button is-fullwidth is-primary" id="buttonLogging">ログ開始</button>
+        </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./build/renderer.js"></script>
+</body>
+
+</html>
