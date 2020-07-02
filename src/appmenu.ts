@@ -9,16 +9,18 @@ module.exports = function (mainWindow) {
                 accelerator: 'Command+Q'
             }
         ]
-    }, {
-        label: 'View',
-        submenu: [{
-            role: 'reload'
-        }, {
-            label: 'DevTools',
-            accelerator: 'Alt+Command+I',
-            click: function () {
-                mainWindow.openDevTools();
-            }
-        }]
+        /*
+            }, {
+                label: 'View',
+                submenu: [{
+                    role: 'reload'
+                }, {
+                    label: 'DevTools',
+                    accelerator: 'Alt+Command+I',
+                    click: function () {
+                        mainWindow.openDevTools();
+                    }
+                }]
+        */
     }];
 };
