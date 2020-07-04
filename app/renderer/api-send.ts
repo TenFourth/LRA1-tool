@@ -38,4 +38,8 @@ export class ApiSend {
     static logging(args) {
         api.send('logging', args);
     }
+
+    static convertToGeoJson(file: string) {
+        api.send('convertToGeoJson', file);
+    }
 }

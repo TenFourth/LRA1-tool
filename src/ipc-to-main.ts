@@ -1,5 +1,6 @@
 const { dialog, ipcMain } = require('electron');
 
+import { Convert } from './convert';
 import { Logging } from './logging';
 import { Serial } from './serial';
 
@@ -49,3 +50,15 @@ ipcMain.on('logging', (event, arg) => {
     Logging.toggle(event, arg.savePath);
     event.reply('logging-reply', Logging.status);
 });
+
+ipcMain.on('convertToGeoJson', (event, arg: string) => {
+    if (!arg) {
+        event.reply('error', 'ファイルを選択してください');
+    }
+
+    try {
+        Convert.toGeoJson(arg);
+    } catch (error) {
+        event.reply('error', error.message);
+    }
+})

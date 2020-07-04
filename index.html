@@ -23,41 +23,110 @@
         </div>
     </nav>
 
-    <div class="columns is-vcentered has-text-right">
-        <div class="column">
-            <a class="button" title="設定" id="buttonSettings"><i class="fas fa-cog"></i> 設定</a>
-        </div>
-    </div>
-
     <div class="columns">
         <div class="column">
-            <div class="content is-small">
-                <h1><i class="fas fa-satellite"></i> GPS</h1>
-                <h2>Location</h2>
-                <input class="input is-small" id="latlng" value="lat: ---.-------, lng: ---.-------" readonly>
-                <h2>Datetime</h2>
-                <input class="input is-small" id="datetime" value="----/--/-- --:--:--" readonly>
-                <h2>Preview</h2>
-                <textarea class="textarea is-small" placeholder="GPS output" id="gps_out" rows="3" readonly></textarea>
+            <div class="tabs is-boxed">
+                <ul>
+                    <li class="is-active" id="tab_logging">
+                        <a id="anchorLogging">
+                            <span class="icon is-small"><i class="fas fa-compact-disc" aria-hidden="true"></i></span>
+                            <span>Logging</span>
+                        </a>
+                    </li>
+                    <li id="tab_convert">
+                        <a id="anchorConvert">
+                            <span class="icon is-small"><i class="fas fa-exchange-alt" aria-hidden="true"></i></span>
+                            <span>Convert</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="column">
-            <div class="content is-small">
-                <h1><i class="fas fa-broadcast-tower"></i> LoRa</h1>
-                <h2>RSSI</h2>
-                <input class="input is-small" type="text" id="rssi" readonly>
-                <h2>Data</h2>
-                <input class="input is-small" id="received_data" readonly>
-                <h2>Preview</h2>
-                <textarea class="textarea is-small" placeholder="LoRa output" id="lora_out" rows="3"
-                    readonly></textarea>
+        <div class="column is-2">
+            <div class="columns is-vcentered has-text-right">
+                <div class="column">
+                    <a class="button" title="設定" id="buttonSettings"><i class="fas fa-cog"></i> 設定</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="columns">
-        <div class="column">
-            <button class="button is-fullwidth is-primary" id="buttonLogging">ログ開始</button>
+    <div id="logging">
+        <div class="columns">
+            <div class="column">
+                <div class="content is-small">
+                    <h1><i class="fas fa-satellite"></i> GPS</h1>
+                    <h2>Location</h2>
+                    <input class="input is-small" id="latlng" value="lat: ---.-------, lng: ---.-------" readonly>
+                    <h2>Datetime</h2>
+                    <input class="input is-small" id="datetime" value="----/--/-- --:--:--" readonly>
+                    <h2>Preview</h2>
+                    <textarea class="textarea is-small" placeholder="GPS output" id="gps_out" rows="3"
+                        readonly></textarea>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content is-small">
+                    <h1><i class="fas fa-broadcast-tower"></i> LoRa</h1>
+                    <h2>RSSI</h2>
+                    <input class="input is-small" type="text" id="rssi" readonly>
+                    <h2>Data</h2>
+                    <input class="input is-small" id="received_data" readonly>
+                    <h2>Preview</h2>
+                    <textarea class="textarea is-small" placeholder="LoRa output" id="lora_out" rows="3"
+                        readonly></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <button class="button is-fullwidth is-primary" id="buttonLogging">ログ開始</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="convert" style="display: none">
+        <div class="columns">
+            <div class="column">
+                <div class="content is-small">
+                    <h1>GeoJSON変換</h1>
+                    Logging画面で保存したCSVファイルをGeoJSONファイルに変換します。地理院地図のサイト上でGeoJSONファイルを読み込むことにより、LoRaのRSSIと受信した場所を確認することができます
+                    <p>
+                    <ul>
+                        <li>地理院地図</li>
+                        http://maps.gsi.go.jp/
+                        <ul>
+                            <li>
+                                [ツール] → [作図・ファイル] のサブウィンドウを表示してから、フォルダのアイコン(ファイルからデータを読込み)をクリックしてGeoJSONファイルを指定します
+                            </li>
+                            <li>
+                                または、GeoJSONファイルを地図上にドラッグ&ドロップしても開くことができます
+                            </li>
+                        </ul>
+                    </ul>
+                    </p>
+                    <div class="field"><label class="label">CSVファイル</label>
+                        <div class="file has-name is-right is-fullwidth is-link">
+                            <label class="file-label">
+                                <input class="file-input" id="convert_csv_input" type="file" name="resume"
+                                    accept="text/csv,.csv">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                    <span class="file-label">参照</span>
+                                </span>
+                                <span class="file-name" id="convert_csv_filename"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <button class="button is-fullwidth is-primary" id="buttonConvert">変換</button>
+            </div>
         </div>
     </div>
 
