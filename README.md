@@ -1,6 +1,6 @@
 # LRA1-tool
 
-LoRaの通信距離を計測するためのツールです
+LoRaの通信距離を計測するためのツールです。GPSモジュールで測位した場所とLoRaのRSSI(電波強度)を記録して、通信できた場所を確認することができます
 
 ## 構成
 
@@ -16,11 +16,15 @@ Windowsは日本語 64Bit版をお使いください。動作確認は Windows 1
 
 NMEAデータを出力するモジュールであれば基本的に対応可能です。位置が正常に取得できないケースがありましたら、issueを上げてサンプルデータを添付頂ければ可能な限り対応いたします
 
-### LoRa無線モジュール
+### LoRa無線モジュール(LRA1)
 
 送信用1台と受信用1台で2台使います。入手方法やモジュールの詳しい情報は以下のURLをご参照ください
 
 <https://www.i2-ele.co.jp/LoRa.html>
+
+## 入手方法
+
+* [Release](https://github.com/SuzukIoT/LRA1-tool/releases) からセットアッププログラムをダウンロードできます
 
 ## 準備
 
@@ -33,7 +37,7 @@ AUTO="DO:SEND 1234567890:DELAY 5000:LOOP"
 SSAVE
 ```
 
-* 上記のプログラムでは5秒おきにデータを送信します。間隔を変えたい場合は `DELAY` の値を適宜変更してください
+* 上記では5秒おきにデータを送信します。間隔を変えたい場合は `DELAY` の値を適宜変更してください
 
 ### 受信用プログラムのセットアップ
 
@@ -45,7 +49,7 @@ SSAVE
 ### 設置
 
 * 送信用プログラムをセットしたモジュール(送信側)には電源を接続し出発点に置いたままにします
-* 受信用プログラムをセットしたモジュール(受信側)にはPCと繋ぎ、本ツールで受信したデータとRSSI(電波感度)を受取って記録します
+* 受信用プログラムをセットしたモジュール(受信側)はPCと繋ぎます。本ツールで受信したデータとRSSI(電波強度)を受取って記録します
 
 ## 使い方
 
@@ -120,4 +124,7 @@ NODE_MODULE_VERSION 80. Please try re-compiling or re-installing
 
 ## ライセンス情報
 
+* Bulma by Jeremy Thomas.
+  Code copyright 2019 Jeremy Thomas. Code released under the MIT license.
+* Font Awesome is licensed under the SIL OFL 1.1 License
 * Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
